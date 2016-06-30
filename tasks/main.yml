@@ -1,18 +1,28 @@
 ---
 # tasks file for percona-mysql
 - name: Add Percona repository key
+  become: yes
+  become_user: root
   apt_key: keyserver=keys.gnupg.net id=1C4CBDCDCD2EFD2A state=present
 
 - name: Add Percona repository
+  become: yes
+  become_user: root
   apt_repository: repo="deb http://repo.percona.com/apt {{ansible_distribution_release}} main" state=present
 
 - name: Add Percona source repository
+  become: yes
+  become_user: root
   apt_repository: repo="deb-src http://repo.percona.com/apt {{ansible_distribution_release}} main" state=present
 
-- name: Update apt cache
+- name: Update apt
+  become: yes
+  become_user: root
   apt: update_cache=yes
 
 - name: Install Percona MySQL Server
+  become: yes
+  become_user: root
   action: apt pkg={{ item }} state=present
   with_items:
     - percona-server-server-5.7
@@ -24,15 +34,23 @@
     DEBIAN_FRONTEND: noninteractive
 
 - name: Create fnv1a_64
+  become: yes
+  become_user: root
   shell: /usr/bin/mysql -e "CREATE FUNCTION fnv1a_64 RETURNS INTEGER SONAME 'libfnv1a_udf.so'" && touch /var/log/libfnv1a_udf.so.done creates=/var/log/libfnv1a_udf.so.done
 
 - name: Create fnv_64
+  become: yes
+  become_user: root
   shell: /usr/bin/mysql -e "CREATE FUNCTION fnv_64 RETURNS INTEGER SONAME 'libfnv_udf.so'" && touch /var/log/libfnv_udf.so.done creates=/var/log/libfnv_udf.so.done
 
 - name: Create murmur_hash
+  become: yes
+  become_user: root
   shell: /usr/bin/mysql -e "CREATE FUNCTION murmur_hash RETURNS INTEGER SONAME 'libmurmur_udf.so'" && touch /var/log/libmurmur_udf.so.done creates=/var/log/libmurmur_udf.so.done
 
 - name: Update Percona MySQL Server root password
+  become: yes
+  become_user: root
   mysql_user: name=root host={{ item }} password={{ mysql_root_password }} login_user=root login_password={{ mysql_root_password }} check_implicit_admin=yes
   with_items:
     - "{{ ansible_hostname }}"
@@ -41,4 +59,6 @@
     - localhost
 
 - name: Remove test database
+  become: yes
+  become_user: root
   mysql_db: name=test state=absent login_host=localhost login_user=root login_password={{ mysql_root_password }}
