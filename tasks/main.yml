@@ -25,8 +25,8 @@
   become_user: root
   action: apt pkg={{ item }} state=present
   with_items:
-    - percona-server-server-5.7
-    - percona-server-client-5.7
+    - percona-server-server-5.6
+    - percona-server-client-5.6
     - percona-toolkit
     - percona-xtrabackup
     - python-mysqldb
