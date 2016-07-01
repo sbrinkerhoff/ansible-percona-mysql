@@ -1,4 +1,4 @@
-# zerohacks.nginxpercona-mysql
+# zerohacks.percona-mysql
 
 Install Percona Server for MySQL 5.7
 
@@ -18,7 +18,7 @@ None
 
     - hosts: all
       roles:
-        - role: zerohacks.nginxpercona-mysql
+        - role: zerohacks.percona-mysql
           vars:
             - mysql_root_password: newpassword
 
