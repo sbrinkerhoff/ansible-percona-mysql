@@ -1,4 +1,4 @@
-# dotzero.percona-mysql
+# zerohacks.nginxpercona-mysql
 
 Install Percona Server for MySQL 5.7
 
