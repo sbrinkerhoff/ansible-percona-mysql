@@ -1,6 +1,6 @@
 # dotzero.percona-mysql
 
-Install Percona Server for MySQL 5.6
+Install Percona Server for MySQL 5.7
 
 ## Requirements
 

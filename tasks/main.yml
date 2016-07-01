@@ -3,17 +3,12 @@
 - name: Add Percona repository key
   become: yes
   become_user: root
-  apt_key: keyserver=keys.gnupg.net id=1C4CBDCDCD2EFD2A state=present
+  apt_key: keyserver=keys.gnupg.net id=9334A25F8507EFA5 state=present
 
 - name: Add Percona repository
   become: yes
   become_user: root
-  apt_repository: repo="deb http://repo.percona.com/apt {{ansible_distribution_release}} main" state=present
-
-- name: Add Percona source repository
-  become: yes
-  become_user: root
-  apt_repository: repo="deb-src http://repo.percona.com/apt {{ansible_distribution_release}} main" state=present
+  apt: deb="https://repo.percona.com/apt/percona-release_0.1-3.{{ansible_distribution_release}}_all.deb"
 
 - name: Update apt
   become: yes
@@ -25,8 +20,8 @@
   become_user: root
   action: apt pkg={{ item }} state=present
   with_items:
-    - percona-server-server-5.6
-    - percona-server-client-5.6
+    - percona-server-server-5.7
+    - percona-server-client-5.7
     - percona-toolkit
     - percona-xtrabackup
     - python-mysqldb
