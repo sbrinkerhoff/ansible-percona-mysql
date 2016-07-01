@@ -4,7 +4,7 @@ Install Percona Server for MySQL 5.7
 
 ## Requirements
 
-None
+This role requires Ansible 1.9 or higher and platform requirements are listed in the metadata file.
 
 ## Role Variables
 
@@ -16,11 +16,12 @@ None
 
 ## Example Playbook
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
+    - hosts: all
       roles:
-         - { role: zerohacks.percona-mysql }
+        - role: zerohacks.nginxpercona-mysql
+          vars:
+            - mysql_root_password: newpassword
+
 
 ## License
 

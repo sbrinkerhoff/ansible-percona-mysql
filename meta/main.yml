@@ -2,7 +2,7 @@ galaxy_info:
   author: dotzero
   description: Install Percona Server for MySQL 5.7
   license: MIT
-  min_ansible_version: 1.2
+  min_ansible_version: 1.9
   platforms:
     - name: Debian
       versions:

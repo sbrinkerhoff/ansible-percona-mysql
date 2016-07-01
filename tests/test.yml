@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
-  remote_user: root
+- hosts: all
+  vars:
+    - mysql_root_password: testtest
   roles:
     - ansible-percona-mysql
