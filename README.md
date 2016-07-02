@@ -1,5 +1,8 @@
 # zerohacks.percona-mysql
 
+[![Build Status](https://travis-ci.org/zerohacks/ansible-percona-mysql.svg?branch=master)](https://travis-ci.org/zerohacks/ansible-percona-mysql)
+[![Ansible Role](https://img.shields.io/ansible/role/10650.svg?maxAge=2592000)](https://galaxy.ansible.com/zerohacks/percona-mysql/)
+
 Install Percona Server for MySQL 5.7
 
 ## Requirements
@@ -21,7 +24,6 @@ None
         - role: zerohacks.percona-mysql
           vars:
             - mysql_root_password: newpassword
-
 
 ## License
 
