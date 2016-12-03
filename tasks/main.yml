@@ -8,7 +8,7 @@
 - name: Add Percona repository
   become: yes
   become_user: root
-  apt: deb="https://repo.percona.com/apt/percona-release_0.1-3.{{ansible_distribution_release}}_all.deb"
+  apt: deb="https://repo.percona.com/apt/percona-release_0.1-4.{{ansible_distribution_release}}_all.deb"
 
 - name: Update apt
   become: yes
